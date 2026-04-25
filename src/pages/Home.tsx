@@ -242,13 +242,13 @@ const Hero: React.FC<{
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black" />
       </div>
 
-      <div className="relative z-10 space-y-6 mt-32 max-w-5xl">
-        <h1 className="text-6xl md:text-9xl font-black tracking-tighter text-white uppercase drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)]">
+      <div className="relative z-10 space-y-6 mt-24 sm:mt-32 max-w-5xl w-full">
+        <h1 className="text-[clamp(2.5rem,12vw,9rem)] sm:text-7xl md:text-9xl font-black tracking-tighter text-white uppercase drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)] leading-none">
           {renderName()}
         </h1>
         <TaglineMarquee tagline={tagline} />
 
-        <div className="flex flex-wrap justify-center gap-4 pt-12">
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 pt-8 sm:pt-12">
           {socials.map(({ id, platform, url, label }) => {
             const { Icon, hoverBg } = getPlatformMeta(platform);
             return (
@@ -259,9 +259,9 @@ const Hero: React.FC<{
                 rel="noopener noreferrer"
                 aria-label={label}
                 title={label}
-                className={`w-12 h-12 md:w-14 md:h-14 rounded-full bg-zinc-900/80 backdrop-blur-md flex items-center justify-center text-white cursor-pointer hover:scale-110 transition-all duration-300 shadow-xl border border-zinc-800 ${hoverBg}`}
+                className={`w-11 h-11 md:w-14 md:h-14 rounded-full bg-zinc-900/80 backdrop-blur-md flex items-center justify-center text-white cursor-pointer hover:scale-110 transition-all duration-300 shadow-xl border border-zinc-800 ${hoverBg}`}
               >
-                <Icon size={24} />
+                <Icon size={22} />
               </a>
             );
           })}
@@ -295,29 +295,29 @@ const StatClusterDial: React.FC<{ cluster: StatClusterRow; delay?: number }> = (
   return (
     <div
       ref={ref}
-      className={`relative w-80 h-80 flex items-center justify-center scale-90 md:scale-100 transition-all duration-1000 ${
+      className={`relative w-72 h-72 sm:w-80 sm:h-80 flex items-center justify-center scale-75 sm:scale-90 md:scale-100 transition-all duration-1000 ${
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       <div
-        className={`platform-center w-24 h-24 flex items-center justify-center text-white border-2 ${platformStyle.border}`}
+        className={`platform-center w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center text-white border-2 ${platformStyle.border}`}
       >
-        <PlatformIcon size={40} className={platformStyle.color} />
+        <PlatformIcon size={36} className={platformStyle.color} />
       </div>
 
       {cluster.stats.slice(0, 4).map((stat, i) => (
         <div
           key={stat.label + i}
-          className={`absolute ${positions[i]} w-32 h-32 stat-bubble border border-zinc-100/10 transition-all duration-700`}
+          className={`absolute ${positions[i]} w-28 h-28 sm:w-32 sm:h-32 stat-bubble border border-zinc-100/10 transition-all duration-700`}
           style={{
             transitionDelay: `${delay + 200 + i * 120}ms`,
             transform: inView ? "scale(1)" : "scale(0.6)",
             opacity: inView ? 1 : 0,
           }}
         >
-          <span className="text-2xl font-black">{stat.value}</span>
-          <span className="text-[10px] uppercase font-bold text-zinc-600 text-center px-2">
+          <span className="text-xl sm:text-2xl font-black">{stat.value}</span>
+          <span className="text-[9px] sm:text-[10px] uppercase font-bold text-zinc-600 text-center px-2">
             {stat.label}
           </span>
         </div>
@@ -347,7 +347,7 @@ const Analytics: React.FC<{
             headerIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          <h2 className="text-5xl md:text-7xl font-black text-white mb-20 tracking-tighter uppercase italic">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-16 md:mb-20 tracking-tighter uppercase italic">
             Analytics<span className="text-red-600">.</span>
           </h2>
         </div>
@@ -417,7 +417,7 @@ const MangaTeaser: React.FC<{ chapters: MangaChapter[] }> = ({ chapters }) => {
     return (
       <section id="manga-teaser" className="py-24 bg-zinc-950 border-t border-zinc-900">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-5xl md:text-7xl font-black text-white mb-4 tracking-tighter uppercase italic">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-4 tracking-tighter uppercase italic">
             Manga<span className="text-red-600">.</span>
           </h2>
           <p className="text-zinc-500 mt-6 max-w-xl mx-auto">
@@ -432,7 +432,7 @@ const MangaTeaser: React.FC<{ chapters: MangaChapter[] }> = ({ chapters }) => {
     <section id="manga-teaser" className="py-24 bg-zinc-950 border-t border-zinc-900">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
-          <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase italic">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white tracking-tighter uppercase italic">
             Manga<span className="text-red-600">.</span>
           </h2>
           <Link
@@ -506,7 +506,7 @@ const Sponsors: React.FC<{
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <h2 className="text-4xl font-black text-white mb-4 uppercase tracking-tighter">
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4 uppercase tracking-tighter">
             Sponsors <span className="text-zinc-700">/</span> Partners
           </h2>
           <div className="w-12 h-[3px] bg-red-600 mb-12" />
@@ -562,7 +562,7 @@ const Articles: React.FC<{ articles: Article[]; characterImage: string; creatorN
   return (
     <section id="press" className="py-24 bg-black scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-5xl font-black text-white mb-4 tracking-tighter uppercase italic">
+        <h2 className="text-4xl sm:text-5xl font-black text-white mb-4 tracking-tighter uppercase italic">
           Articles<span className="text-red-600">/</span>Appearances
         </h2>
         <div className="w-12 h-[3px] bg-red-600 mb-16" />
@@ -809,7 +809,7 @@ const Inquiries: React.FC<{
       className="py-24 md:py-32 bg-zinc-950 border-t border-zinc-900 scroll-mt-16"
     >
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-5xl md:text-8xl font-black text-white mb-16 md:mb-20 tracking-tighter uppercase italic">
+        <h2 className="text-4xl sm:text-5xl md:text-8xl font-black text-white mb-12 sm:mb-16 md:mb-20 tracking-tighter uppercase italic">
           Inquiries<span className="text-red-600">.</span>
         </h2>
         <div
@@ -819,7 +819,7 @@ const Inquiries: React.FC<{
           }`}
         >
           {image && (
-            <div className="w-full lg:w-1/2 aspect-square bg-zinc-900 overflow-hidden relative group border border-zinc-800">
+            <div className="w-full lg:w-1/2 aspect-[16/10] sm:aspect-[4/3] lg:aspect-square bg-zinc-900 overflow-hidden relative group border border-zinc-800">
               <img
                 src={image}
                 alt={imageBadge ?? ""}
@@ -828,8 +828,8 @@ const Inquiries: React.FC<{
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
               {imageBadge && (
-                <div className="absolute bottom-8 left-8">
-                  <div className="px-6 py-2 bg-red-600 text-white font-black text-xs uppercase tracking-[0.2em]">
+                <div className="absolute bottom-4 left-4 sm:bottom-8 sm:left-8">
+                  <div className="px-4 sm:px-6 py-2 bg-red-600 text-white font-black text-[10px] sm:text-xs uppercase tracking-[0.2em]">
                     {imageBadge}
                   </div>
                 </div>
@@ -844,7 +844,7 @@ const Inquiries: React.FC<{
             <p className="text-zinc-500 font-medium leading-relaxed">{body}</p>
             <a
               href={mailto}
-              className="inline-flex items-center gap-3 px-12 py-5 bg-white text-black text-xs font-black uppercase tracking-[0.3em] hover:bg-red-600 hover:text-white transition-all duration-300 shadow-[10px_10px_0px_0px_rgba(255,255,255,0.1)]"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-3 px-8 sm:px-12 py-4 sm:py-5 bg-white text-black text-xs font-black uppercase tracking-[0.3em] hover:bg-red-600 hover:text-white transition-all duration-300 shadow-[10px_10px_0px_0px_rgba(255,255,255,0.1)]"
             >
               <Mail size={16} />
               {ctaLabel}

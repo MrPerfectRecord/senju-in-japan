@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Save, Plus, Trash2 } from "lucide-react";
+import { Save, Plus, Trash2, RefreshCw, Youtube as YoutubeIcon } from "lucide-react";
 import { supabase } from "../../lib/supabase";
+import { authedFetch } from "../../lib/authedFetch";
 import type { StatCluster, StatSummary } from "../../lib/database.types";
 import { Banner, Button, Field, Input, PageHeader } from "./_formKit";
 
@@ -12,6 +13,8 @@ export default function EditStats() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const [syncing, setSyncing] = useState(false);
+  const [syncMsg, setSyncMsg] = useState<string | null>(null);
 
   async function load() {
     setLoading(true);
@@ -104,11 +107,51 @@ export default function EditStats() {
     setSaving(false);
   }
 
+  async function syncYoutube() {
+    setSyncing(true);
+    setError(null);
+    setSyncMsg(null);
+    try {
+      const r = await authedFetch("/api/sync-youtube-stats", { method: "POST" });
+      const body = (await r.json().catch(() => ({}))) as {
+        ok?: boolean;
+        error?: string;
+        youtube?: { subscribers: string; views: string; videos: string; avgViews: string };
+        asOfLabel?: string;
+      };
+      if (!r.ok || !body.ok) throw new Error(body.error || "Sync failed");
+      setSyncMsg(
+        `YouTube synced — ${body.youtube?.subscribers} subs · ${body.youtube?.views} views · ${body.youtube?.videos} videos`
+      );
+      await load();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Sync failed");
+    } finally {
+      setSyncing(false);
+    }
+  }
+
   return (
     <>
       <PageHeader title="Stats" sub="Numbers in the analytics section." />
       {error && <Banner kind="error">{error}</Banner>}
       {success && <Banner kind="success">Saved.</Banner>}
+      {syncMsg && <Banner kind="success">{syncMsg}</Banner>}
+
+      <div className="bg-zinc-950 border border-zinc-800 p-4 mb-8 max-w-3xl flex items-center justify-between gap-4 flex-wrap">
+        <div className="min-w-0 flex-1">
+          <p className="text-xs font-black uppercase tracking-[0.3em] text-zinc-500 flex items-center gap-2 mb-1">
+            <YoutubeIcon size={14} className="text-red-500" /> Auto-sync
+          </p>
+          <p className="text-xs text-zinc-500">
+            Pulls live subscriber/view/video counts from your YouTube channel and updates the
+            dial + summary card. Click as often as you want — runs against a free 10K/day quota.
+          </p>
+        </div>
+        <Button type="button" onClick={syncYoutube} loading={syncing} variant="ghost">
+          <RefreshCw size={14} /> {syncing ? "Syncing…" : "Sync from YouTube"}
+        </Button>
+      </div>
 
       {loading ? <p className="text-zinc-500">Loading…</p> : (
         <div className="space-y-10 max-w-3xl">
