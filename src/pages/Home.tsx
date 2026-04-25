@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { useSiteContent } from "../lib/useSiteContent";
 import { useAuth, signOut } from "../lib/useAuth";
+import { TweetEmbed, extractTweetId } from "../components/TweetEmbed";
 import type {
   Article,
   MangaChapter,
@@ -656,6 +657,22 @@ const ArticleCard: React.FC<{
   }
 
   if (article.kind === "tweet") {
+    // If the URL is a real X/Twitter post, embed it live via the platform widget.
+    // Otherwise, fall back to the stylized quote card (backwards-compat).
+    const tweetId = article.url ? extractTweetId(article.url) : null;
+
+    if (tweetId && article.url) {
+      return (
+        <div
+          ref={ref}
+          style={styleDelay}
+          className={`bg-black border border-zinc-800 p-3 flex flex-col items-center ${baseTransition}`}
+        >
+          <TweetEmbed url={article.url} />
+        </div>
+      );
+    }
+
     return (
       <div
         ref={ref}
