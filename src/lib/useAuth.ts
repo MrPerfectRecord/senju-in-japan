@@ -12,7 +12,12 @@ interface AuthState {
   isReader: boolean;
 }
 
-/** Subscribes to Supabase auth state and the user's profile row. */
+/**
+ * Subscribes to Supabase auth state and keeps the user's profile row fresh.
+ * `loading` stays true until both the session *and* the profile (if there is a
+ * user) have been resolved, so consumers can safely gate redirects on !loading
+ * without flashing through a false "no session" state.
+ */
 export function useAuth(): AuthState {
   const [loading, setLoading] = useState(true);
   const [session, setSession] = useState<Session | null>(null);
@@ -25,13 +30,42 @@ export function useAuth(): AuthState {
     }
     let active = true;
 
-    supabase.auth.getSession().then(({ data }) => {
-      if (!active) return;
-      setSession(data.session);
-    });
+    async function fetchProfile(userId: string): Promise<Profile | null> {
+      const { data } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", userId)
+        .maybeSingle();
+      return (data as Profile | null) ?? null;
+    }
 
-    const { data: sub } = supabase.auth.onAuthStateChange((_event, sess) => {
+    async function init() {
+      const { data } = await supabase.auth.getSession();
+      if (!active) return;
+      const sess = data.session;
       setSession(sess);
+      if (sess?.user) {
+        const p = await fetchProfile(sess.user.id);
+        if (!active) return;
+        setProfile(p);
+      } else {
+        setProfile(null);
+      }
+      setLoading(false);
+    }
+    void init();
+
+    const { data: sub } = supabase.auth.onAuthStateChange(async (_event, sess) => {
+      if (!active) return;
+      setSession(sess);
+      if (sess?.user) {
+        const p = await fetchProfile(sess.user.id);
+        if (!active) return;
+        setProfile(p);
+      } else {
+        setProfile(null);
+      }
+      setLoading(false);
     });
 
     return () => {
@@ -39,30 +73,6 @@ export function useAuth(): AuthState {
       sub.subscription.unsubscribe();
     };
   }, []);
-
-  useEffect(() => {
-    if (!supabaseConfigured) return;
-    let active = true;
-    if (!session?.user) {
-      setProfile(null);
-      setLoading(false);
-      return;
-    }
-    setLoading(true);
-    supabase
-      .from("profiles")
-      .select("*")
-      .eq("id", session.user.id)
-      .single()
-      .then(({ data }) => {
-        if (!active) return;
-        setProfile((data as Profile) ?? null);
-        setLoading(false);
-      });
-    return () => {
-      active = false;
-    };
-  }, [session?.user?.id]);
 
   return {
     loading,
