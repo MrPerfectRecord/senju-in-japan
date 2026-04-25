@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Youtube,
   Instagram,
@@ -15,7 +15,6 @@ import {
   BookOpen,
   Lock,
   LogOut,
-  Settings,
 } from "lucide-react";
 import { useSiteContent } from "../lib/useSiteContent";
 import { useAuth, signOut } from "../lib/useAuth";
@@ -96,8 +95,7 @@ function smoothScrollTo(id: string) {
 // ---------------------------------------------------------------------------
 const Navbar: React.FC<{ creatorName: string }> = ({ creatorName }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
-  const { isAdmin, user } = useAuth();
+  const { user } = useAuth();
 
   const navLink = (id: string, label: string) => (
     <button
@@ -135,14 +133,6 @@ const Navbar: React.FC<{ creatorName: string }> = ({ creatorName }) => {
             </Link>
             {navLink("press", "Press")}
             {navLink("inquiries", "Inquiries")}
-            {isAdmin ? (
-              <button
-                onClick={() => navigate("/admin")}
-                className="text-xs font-black text-red-500 hover:text-red-400 transition-colors uppercase tracking-widest flex items-center gap-1"
-              >
-                <Settings size={14} /> Admin
-              </button>
-            ) : null}
             {user ? (
               <button
                 onClick={() => signOut()}
@@ -174,11 +164,6 @@ const Navbar: React.FC<{ creatorName: string }> = ({ creatorName }) => {
           </Link>
           {navLink("press", "Press")}
           {navLink("inquiries", "Inquiries")}
-          {isAdmin && (
-            <Link to="/admin" onClick={() => setIsOpen(false)} className="text-xs font-black text-red-500 uppercase tracking-widest">
-              Admin
-            </Link>
-          )}
         </div>
       )}
     </nav>
