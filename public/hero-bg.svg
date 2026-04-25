@@ -1,0 +1,235 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <!-- Moonlit Itsukushima — floating torii gate at night, full moon, water reflection.
+       Replace by dropping a new image at public/ and updating
+       creator.heroBackground in src/siteData.ts. -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#020616"/>
+      <stop offset="55%"  stop-color="#0a234a"/>
+      <stop offset="100%" stop-color="#103e6e"/>
+    </linearGradient>
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="#fff7e0" stop-opacity="0.55"/>
+      <stop offset="60%" stop-color="#fff7e0" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#fff7e0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="moon" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="#ffffff"/>
+      <stop offset="70%" stop-color="#fff7e0"/>
+      <stop offset="100%" stop-color="#f3deb1"/>
+    </radialGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#1d4980"/>
+      <stop offset="30%"  stop-color="#0e2c54"/>
+      <stop offset="100%" stop-color="#03101f"/>
+    </linearGradient>
+    <linearGradient id="moonReflect" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#fff7e0" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#fff7e0" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="dots" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="11" cy="11" r="1.2" fill="rgba(255,255,255,0.05)"/>
+    </pattern>
+  </defs>
+
+  <!-- ============== SKY ============== -->
+  <rect width="1920" height="660" fill="url(#sky)"/>
+  <rect width="1920" height="660" fill="url(#dots)"/>
+
+  <!-- Distant nebula band -->
+  <ellipse cx="600" cy="220" rx="720" ry="60" fill="#5a3aa0" opacity="0.10"/>
+  <ellipse cx="1200" cy="180" rx="540" ry="40" fill="#6f4ac0" opacity="0.07"/>
+
+  <!-- ============== STARS ============== -->
+  <g fill="#ffffff">
+    <!-- bright stars with halos -->
+    <circle cx="180"  cy="120" r="2.5"/>
+    <circle cx="180"  cy="120" r="6"   opacity="0.25"/>
+    <circle cx="540"  cy="80"  r="3"/>
+    <circle cx="540"  cy="80"  r="7"   opacity="0.25"/>
+    <circle cx="820"  cy="180" r="2.5"/>
+    <circle cx="820"  cy="180" r="6"   opacity="0.22"/>
+    <circle cx="1620" cy="120" r="3"/>
+    <circle cx="1620" cy="120" r="7"   opacity="0.25"/>
+    <circle cx="1780" cy="60"  r="2.5"/>
+    <circle cx="1780" cy="60"  r="6"   opacity="0.22"/>
+  </g>
+  <g fill="#ffffff" opacity="0.85">
+    <circle cx="60"   cy="60"  r="1.4"/>
+    <circle cx="120"  cy="180" r="1"/>
+    <circle cx="240"  cy="80"  r="1.5"/>
+    <circle cx="300"  cy="220" r="1"/>
+    <circle cx="380"  cy="140" r="1.4"/>
+    <circle cx="460"  cy="60"  r="1.2"/>
+    <circle cx="500"  cy="180" r="1"/>
+    <circle cx="620"  cy="160" r="1.5"/>
+    <circle cx="700"  cy="60"  r="1.2"/>
+    <circle cx="760"  cy="220" r="1"/>
+    <circle cx="900"  cy="100" r="1.4"/>
+    <circle cx="980"  cy="200" r="1"/>
+    <circle cx="1060" cy="140" r="1.5"/>
+    <circle cx="1140" cy="80"  r="1.2"/>
+    <circle cx="1220" cy="200" r="1"/>
+    <circle cx="1300" cy="100" r="1.4"/>
+    <circle cx="1380" cy="180" r="1"/>
+    <circle cx="1460" cy="80"  r="1.5"/>
+    <circle cx="1540" cy="200" r="1.2"/>
+    <circle cx="1700" cy="200" r="1"/>
+    <circle cx="1860" cy="140" r="1.4"/>
+    <circle cx="1900" cy="240" r="1"/>
+    <!-- mid-band stars -->
+    <circle cx="100"  cy="320" r="1"/>
+    <circle cx="240"  cy="380" r="1.3"/>
+    <circle cx="380"  cy="300" r="1"/>
+    <circle cx="500"  cy="360" r="1.2"/>
+    <circle cx="640"  cy="320" r="1"/>
+    <circle cx="780"  cy="400" r="1.3"/>
+    <circle cx="920"  cy="320" r="1"/>
+    <circle cx="1060" cy="380" r="1.2"/>
+    <circle cx="1200" cy="320" r="1"/>
+    <circle cx="1340" cy="400" r="1.3"/>
+    <circle cx="1480" cy="320" r="1"/>
+    <circle cx="1620" cy="380" r="1.2"/>
+    <circle cx="1760" cy="320" r="1"/>
+    <circle cx="1860" cy="420" r="1.3"/>
+    <circle cx="160"  cy="460" r="1"/>
+    <circle cx="320"  cy="500" r="1.2"/>
+    <circle cx="500"  cy="480" r="1"/>
+    <circle cx="700"  cy="520" r="1.2"/>
+    <circle cx="900"  cy="480" r="1"/>
+  </g>
+
+  <!-- subtle 4-point sparkle on a couple of bright stars -->
+  <g stroke="#ffffff" stroke-width="0.8" opacity="0.5">
+    <line x1="540" y1="64"  x2="540" y2="96"/>
+    <line x1="524" y1="80"  x2="556" y2="80"/>
+    <line x1="1620" y1="104" x2="1620" y2="136"/>
+    <line x1="1604" y1="120" x2="1636" y2="120"/>
+  </g>
+
+  <!-- ============== MOON ============== -->
+  <circle cx="1380" cy="280" r="320" fill="url(#moonGlow)"/>
+  <circle cx="1380" cy="280" r="180" fill="url(#moon)"/>
+  <!-- subtle craters -->
+  <g fill="#e7d1a3" opacity="0.55">
+    <circle cx="1320" cy="240" r="14"/>
+    <circle cx="1430" cy="220" r="9"/>
+    <circle cx="1410" cy="320" r="18"/>
+    <circle cx="1340" cy="340" r="11"/>
+    <circle cx="1470" cy="290" r="7"/>
+    <circle cx="1290" cy="300" r="6"/>
+  </g>
+
+  <!-- distant clouds drifting across the moon -->
+  <ellipse cx="1340" cy="270" rx="280" ry="9"  fill="#06182f" opacity="0.55"/>
+  <ellipse cx="1440" cy="305" rx="240" ry="6"  fill="#06182f" opacity="0.45"/>
+
+  <!-- ============== HORIZON / DISTANT LAND ============== -->
+  <polygon points="0,580 240,520 520,560 800,520 1080,540 1320,500 1620,540 1920,520 1920,660 0,660"
+           fill="#020616" opacity="0.92"/>
+  <!-- distant pagoda silhouette nestled in the hills -->
+  <g fill="#020616" opacity="0.95">
+    <rect x="320" y="520" width="14" height="40"/>
+    <polygon points="312,520 342,520 338,510 316,510"/>
+    <rect x="322" y="498" width="10" height="22"/>
+    <polygon points="316,498 338,498 334,488 320,488"/>
+    <line x1="327" y1="488" x2="327" y2="478" stroke="#020616" stroke-width="2"/>
+  </g>
+
+  <!-- soft mist along horizon -->
+  <rect y="560" width="1920" height="60" fill="#5a8db8" opacity="0.10"/>
+  <rect y="570" width="1920" height="40" fill="#fff" opacity="0.04"/>
+
+  <!-- ============== WATER ============== -->
+  <rect y="660" width="1920" height="420" fill="url(#water)"/>
+
+  <!-- moon reflection (vertical column shimmer) -->
+  <ellipse cx="1380" cy="700"  rx="200" ry="14" fill="#fff7e0" opacity="0.55"/>
+  <ellipse cx="1380" cy="760"  rx="180" ry="10" fill="#fff7e0" opacity="0.40"/>
+  <ellipse cx="1380" cy="820"  rx="160" ry="8"  fill="#fff7e0" opacity="0.28"/>
+  <ellipse cx="1380" cy="880"  rx="140" ry="6"  fill="#fff7e0" opacity="0.18"/>
+  <ellipse cx="1380" cy="940"  rx="120" ry="5"  fill="#fff7e0" opacity="0.12"/>
+  <ellipse cx="1380" cy="1000" rx="100" ry="4"  fill="#fff7e0" opacity="0.08"/>
+
+  <!-- subtle horizontal water ripples -->
+  <g stroke="#5a8db8" stroke-width="1" fill="none" opacity="0.35">
+    <line x1="0"    y1="700" x2="1180" y2="700"/>
+    <line x1="1580" y1="700" x2="1920" y2="700"/>
+    <line x1="0"    y1="740" x2="1240" y2="740"/>
+    <line x1="1540" y1="740" x2="1920" y2="740"/>
+    <line x1="0"    y1="780" x2="1300" y2="780"/>
+    <line x1="1480" y1="780" x2="1920" y2="780"/>
+    <line x1="0"    y1="820" x2="1260" y2="820"/>
+    <line x1="1500" y1="820" x2="1920" y2="820"/>
+    <line x1="0"    y1="860" x2="1320" y2="860"/>
+    <line x1="1460" y1="860" x2="1920" y2="860"/>
+    <line x1="0"    y1="900" x2="1280" y2="900"/>
+    <line x1="1500" y1="900" x2="1920" y2="900"/>
+    <line x1="0"    y1="950" x2="1340" y2="950"/>
+    <line x1="1440" y1="950" x2="1920" y2="950"/>
+    <line x1="0"    y1="1010" x2="1300" y2="1010"/>
+    <line x1="1480" y1="1010" x2="1920" y2="1010"/>
+  </g>
+
+  <!-- ============== TORII GATE (in water, foreground) ============== -->
+  <!-- Reflection of the torii (rendered first, so the gate sits over it) -->
+  <g opacity="0.32">
+    <rect x="700"  y="660" width="40"  height="220" fill="#c8302d"/>
+    <rect x="1180" y="660" width="40"  height="220" fill="#c8302d"/>
+    <rect x="690"  y="700" width="540" height="14"  fill="#c8302d"/>
+    <path d="M650,860 Q665,890 700,890 L1220,890 Q1255,890 1270,860 L1270,844 Q1255,856 1220,856 L700,856 Q665,856 650,844 Z" fill="#8a1c1c"/>
+    <!-- shimmer break -->
+    <rect x="690" y="740" width="540" height="6" fill="url(#water)"/>
+    <rect x="690" y="800" width="540" height="6" fill="url(#water)"/>
+    <rect x="690" y="850" width="540" height="6" fill="url(#water)"/>
+  </g>
+
+  <!-- Real torii -->
+  <!-- Pillar bases (under-water hint) -->
+  <ellipse cx="720"  cy="858" rx="38" ry="10" fill="#06182f" opacity="0.85"/>
+  <ellipse cx="1200" cy="858" rx="38" ry="10" fill="#06182f" opacity="0.85"/>
+  <!-- Pillars -->
+  <rect x="700"  y="538" width="40" height="320" fill="#c8302d"/>
+  <rect x="1180" y="538" width="40" height="320" fill="#c8302d"/>
+  <!-- Pillar shading -->
+  <rect x="700"  y="538" width="6" height="320" fill="rgba(255,255,255,0.12)"/>
+  <rect x="1180" y="538" width="6" height="320" fill="rgba(255,255,255,0.12)"/>
+  <rect x="730"  y="538" width="10" height="320" fill="rgba(0,0,0,0.30)"/>
+  <rect x="1210" y="538" width="10" height="320" fill="rgba(0,0,0,0.30)"/>
+  <!-- Lower crossbeam (nuki) -->
+  <rect x="690" y="600" width="540" height="20" fill="#c8302d"/>
+  <rect x="690" y="600" width="540" height="4"  fill="rgba(255,255,255,0.18)"/>
+  <rect x="690" y="616" width="540" height="4"  fill="rgba(0,0,0,0.30)"/>
+  <!-- Upper crossbeam (kasagi) — curved -->
+  <path d="M650,540
+           Q665,510 700,510
+           L1220,510
+           Q1255,510 1270,540
+           L1270,562
+           Q1255,548 1220,548
+           L700,548
+           Q665,548 650,562 Z"
+        fill="#8a1c1c"/>
+  <rect x="650" y="540" width="620" height="3" fill="rgba(255,255,255,0.18)"/>
+  <!-- Plaque -->
+  <rect x="935" y="568" width="50" height="40" fill="#1a0608"/>
+  <text x="960" y="600" text-anchor="middle" font-family="serif" font-size="28"
+        font-weight="900" fill="#f5d76e">神</text>
+
+  <!-- ripples around the torii base -->
+  <g stroke="#fff7e0" stroke-width="1" fill="none" opacity="0.35">
+    <ellipse cx="720"  cy="864" rx="60"  ry="6"/>
+    <ellipse cx="720"  cy="876" rx="80"  ry="7"/>
+    <ellipse cx="720"  cy="888" rx="100" ry="8"/>
+    <ellipse cx="1200" cy="864" rx="60"  ry="6"/>
+    <ellipse cx="1200" cy="876" rx="80"  ry="7"/>
+    <ellipse cx="1200" cy="888" rx="100" ry="8"/>
+  </g>
+
+  <!-- distant lantern light reflection at right shore -->
+  <ellipse cx="1820" cy="660" rx="20" ry="6" fill="#ffd45c" opacity="0.55"/>
+  <ellipse cx="1820" cy="700" rx="14" ry="50" fill="#ffd45c" opacity="0.18"/>
+
+  <!-- Subtle bottom vignette for headline legibility -->
+  <rect y="780" width="1920" height="300" fill="#020616" opacity="0.45"/>
+</svg>

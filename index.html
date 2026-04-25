@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- Primary SEO -->
+    <title>Senju in Japan | Streamer · Creator · Entertainer</title>
+    <meta
+      name="description"
+      content="Official hub for Senju in Japan — streamer, creator, and entertainer. Watch on YouTube, follow on X/Instagram/TikTok, and book PC-build consultations."
+    />
+    <meta name="author" content="Senju in Japan" />
+    <link rel="canonical" href="https://senjuinjapan.com/" />
+
+    <!-- Open Graph (Facebook, Discord, iMessage, LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Senju in Japan" />
+    <meta property="og:title" content="Senju in Japan | Streamer · Creator · Entertainer" />
+    <meta property="og:description" content="Official creator hub — YouTube, X, Instagram, Discord, TikTok, and PC-build inquiries." />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:url" content="https://senjuinjapan.com/" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Senju_in_Japan" />
+    <meta name="twitter:creator" content="@Senju_in_Japan" />
+    <meta name="twitter:title" content="Senju in Japan" />
+    <meta name="twitter:description" content="Streamer · Creator · Entertainer" />
+    <meta name="twitter:image" content="/og-image.png" />
+
+    <!-- Favicon (SVG + fallback) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind via CDN (Play CDN — fine for a single-page hub).
+         For a zero-CDN production build, follow the README to swap in the
+         tailwind PostCSS pipeline. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #000000;
+        color: #ffffff;
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .glass-nav {
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      .stat-bubble {
+        background-color: #ffffff;
+        color: #000000;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .stat-bubble:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 30px rgba(220, 38, 38, 0.25);
+      }
+      .platform-center {
+        border-radius: 50%;
+        padding: 20px;
+        background: #000;
+      }
+      .masonry-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-auto-rows: min-content;
+        gap: 1.5rem;
+      }
+      /* Continuously scrolling marquee for the hero tagline.
+         Two identical copies sit side-by-side; we animate -50% so the loop is seamless. */
+      @keyframes marquee {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .marquee-track {
+        display: inline-flex;
+        white-space: nowrap;
+        animation: marquee 45s linear infinite;
+        will-change: transform;
+      }
+      .marquee-track:hover {
+        animation-play-state: paused;
+      }
+      /* Soft fade on the inner edges so the loop seam is invisible */
+      .marquee-mask {
+        -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+                mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+      }
+      /* Respect "reduce motion" system preference */
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

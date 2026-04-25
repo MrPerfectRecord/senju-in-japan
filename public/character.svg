@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 940" preserveAspectRatio="xMidYMid slice">
+  <!-- Placeholder artwork matching the Senju in Japan aesthetic.
+       Replace by dropping your own file at public/character.jpg and
+       updating `characterImage` in src/siteData.ts to "/character.jpg" -->
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="38%" r="70%">
+      <stop offset="0%"  stop-color="#ff9ea5"/>
+      <stop offset="55%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#991b1b"/>
+    </radialGradient>
+    <linearGradient id="kimono" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%"  stop-color="#111827"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+    <pattern id="dots" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="7" cy="7" r="1.6" fill="rgba(255,255,255,0.18)"/>
+    </pattern>
+  </defs>
+
+  <!-- Sky backdrop -->
+  <rect width="940" height="940" fill="url(#sky)"/>
+  <rect width="940" height="940" fill="url(#dots)"/>
+
+  <!-- Distant mountain silhouette -->
+  <polygon points="0,600 210,430 360,560 540,380 720,580 940,440 940,940 0,940"
+           fill="rgba(0,0,0,0.22)"/>
+
+  <!-- Pagoda silhouette on right -->
+  <g opacity="0.28" fill="#000">
+    <rect x="720" y="480" width="120" height="260"/>
+    <polygon points="700,480 860,480 820,440 740,440"/>
+    <polygon points="680,440 880,440 830,400 730,400"/>
+    <polygon points="660,400 900,400 840,360 720,360"/>
+    <polygon points="700,360 860,360 820,320 740,320"/>
+  </g>
+
+  <!-- Falling cherry petals -->
+  <g fill="#fbcfe8" opacity="0.85">
+    <ellipse cx="120" cy="210" rx="10" ry="5" transform="rotate(30 120 210)"/>
+    <ellipse cx="260" cy="120" rx="8"  ry="4" transform="rotate(-20 260 120)"/>
+    <ellipse cx="800" cy="180" rx="9"  ry="5" transform="rotate(50 800 180)"/>
+    <ellipse cx="640" cy="300" rx="7"  ry="4" transform="rotate(-35 640 300)"/>
+    <ellipse cx="180" cy="520" rx="8"  ry="4" transform="rotate(15 180 520)"/>
+    <ellipse cx="880" cy="640" rx="9"  ry="5" transform="rotate(-40 880 640)"/>
+  </g>
+
+  <!-- Kimono body -->
+  <path d="M 150,940 L 210,560 Q 280,480 360,470 L 580,470 Q 660,480 730,560 L 790,940 Z"
+        fill="url(#kimono)"/>
+  <!-- Inner white collar -->
+  <path d="M 400,480 L 470,640 L 540,480 L 530,470 L 470,540 L 410,470 Z"
+        fill="#f9fafb"/>
+  <!-- Red obi belt -->
+  <rect x="360" y="700" width="220" height="38" fill="#dc2626"/>
+
+  <!-- Neck + outstretched arm -->
+  <rect x="445" y="420" width="50" height="70" fill="#6b3f1f"/>
+  <path d="M 210,560 Q 120,620 70,700 Q 130,720 200,700 Q 240,660 280,620 Z" fill="#6b3f1f"/>
+  <!-- Palm with kanji '拝' stand-in -->
+  <circle cx="120" cy="680" r="60" fill="#7a4a25"/>
+  <text x="120" y="700" text-anchor="middle" font-family="serif" font-size="48" fill="#dc2626" font-weight="900">拝</text>
+
+  <!-- Onigiri / rice-ball head -->
+  <path d="M 360,380 Q 470,220 580,380 L 580,440 Q 470,470 360,440 Z" fill="#f3f4f6"/>
+  <!-- Nori wrap on bottom -->
+  <rect x="355" y="410" width="230" height="45" fill="#0f172a"/>
+  <!-- Jagged rice texture on top -->
+  <path d="M 370,250 l 15,15 l 12,-18 l 14,16 l 15,-14 l 14,15 l 12,-16 l 14,14 l 14,-15 l 14,14 l 14,-14 l 14,15 l 12,-13 l 15,14 l 14,-15 l 13,16"
+        stroke="#e5e7eb" stroke-width="5" fill="none" stroke-linejoin="round"/>
+
+  <!-- Face: one circle-eye + one X-eye -->
+  <circle cx="425" cy="345" r="18" fill="none" stroke="#dc2626" stroke-width="7"/>
+  <g stroke="#0f172a" stroke-width="7" stroke-linecap="round">
+    <line x1="498" y1="328" x2="534" y2="362"/>
+    <line x1="534" y1="328" x2="498" y2="362"/>
+  </g>
+
+  <!-- Orange halo -->
+  <path d="M 335,395 Q 470,170 605,395" fill="none" stroke="#f97316" stroke-width="14"/>
+</svg>
